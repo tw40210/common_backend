@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-from .routers import RoleGameRouter
+from .routers import common_router
 
 
 app = FastAPI()
@@ -17,9 +17,9 @@ app.add_middleware(
 )
 
 app.include_router(
-    RoleGameRouter.router,
-    prefix="/backend",
-    tags=["backend"],
+    common_router.router,
+    prefix="/common",
+    tags=["common"],
     responses={404: {"description": "Not found"}},
 )
 
